@@ -8,4 +8,5 @@ variable "bastion_cidr" {}
 variable "min_size" {}
 variable "max_size" {}
 variable "desired_capacity" {}
+variable "tags" {}
 

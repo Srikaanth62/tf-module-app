@@ -16,6 +16,15 @@ resource "aws_autoscaling_group" "asg" {
     id      = aws_launch_template.template.id
     version = "$Latest"
   }
+
+  dynamic "tag" {
+    for_each = local.asg_tags
+    content {
+      key                 = tag.key
+      propagate_at_launch = true
+      value               = tag.value
+    }
+  }
 }
 
 
@@ -53,14 +62,6 @@ resource "aws_security_group" "sg" {
     Name = "${var.name}-${var.env}-sg"
   }
 
-  dynamic "tag" {
-    for_each = local.asg_tags
-    content {
-      key                 = tag.key
-      propagate_at_launch = true
-      value               = tag.value
-    }
-  }
 }
 
 

@@ -20,11 +20,11 @@ resource "aws_autoscaling_group" "asg" {
 
 dynamic "tag" {
   for_each = local.asg_tags
-#  content {
-#    key                 = tag.key
-#    propagate_at_launch = true
-#    value               = tag.value
-#  }
+  content {
+    key                 = tag[key]
+    propagate_at_launch = true
+    value               = tag[value]
+  }
 }
 
 resource "aws_security_group" "sg" {

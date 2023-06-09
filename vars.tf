@@ -9,5 +9,3 @@ variable "min_size" {}
 variable "max_size" {}
 variable "desired_capacity" {}
 variable "tags" {}
-variable "asg_tags" {}
-
